@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptiRes — AI Resume Tailor</title>
+  <meta name="description" content="Instantly tailor your resume to any job description using Llama AI. Get ATS-optimized, LaTeX-formatted resumes that stand out to recruiters." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Opti<span>res</span></a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#app-section" class="btn btn-sm btn-primary">Try it free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Your Resume,<br /><span class="gradient-text">Perfectly Tailored</span></h1>
+      <p class="hero-subtitle">Paste your resume and job description. Our AI rewrites, optimizes, and exports a LaTeX-formatted resume that beats ATS filters and impresses recruiters.</p>
+      <div class="hero-cta">
+        <a href="#app-section" class="btn btn-primary btn-lg">Tailor My Resume →</a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">See how it works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">ATS</span><span class="stat-label">Optimized</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">LaTeX</span><span class="stat-label">Formatted</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Powered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how-it-works" class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Three simple steps to your perfect resume</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-icon">📄</div>
+          <h3>1. Paste Your Resume</h3>
+          <p>Copy and paste your existing resume text and the job description you're targeting.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🤖</div>
+          <h3>2. AI Tailors It</h3>
+          <p>Llama 3.1 analyzes the JD, rewrites your bullets with STAR methodology, and injects ATS keywords.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">⬇️</div>
+          <h3>3. Export & Apply</h3>
+          <p>Download the LaTeX source or open it directly in Overleaf to get a beautifully formatted PDF.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APP ── -->
+  <section id="app-section" class="app-section">
+    <div class="container">
+
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="si-step active" id="si-step-1"><span class="si-num">1</span><span class="si-label">Your Info</span></div>
+        <div class="si-line" id="si-line-1"></div>
+        <div class="si-step" id="si-step-2"><span class="si-num">2</span><span class="si-label">AI Processing</span></div>
+        <div class="si-line" id="si-line-2"></div>
+        <div class="si-step" id="si-step-3"><span class="si-num">3</span><span class="si-label">Results</span></div>
+      </div>
+
+      <!-- PANE 1: Input Form -->
+      <div id="pane-input" class="pane">
+        <form id="resume-form">
+          <div class="form-grid">
+            <!-- Left column -->
+            <div class="form-col">
+              <div class="form-card">
+                <div class="form-card-header">
+                  <span class="form-card-icon">💼</span>
+                  <h3>Job Details</h3>
+                </div>
+                <div class="form-group">
+                  <label for="job-title">Job Title <span class="required">*</span></label>
+                  <input type="text" id="job-title" placeholder="e.g. Senior Frontend Developer" required />
+                </div>
+                <div class="form-group">
+                  <label for="company-name">Company Name <span class="optional">(optional)</span></label>
+                  <input type="text" id="company-name" placeholder="e.g. Google" />
+                </div>
+                <div class="form-group">
+                  <label for="job-description">Job Description <span class="required">*</span></label>
+                  <textarea id="job-description" rows="10" placeholder="Paste the full job description here..." required></textarea>
+                  <span class="char-count" id="jd-char-count">0 characters</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right column -->
+            <div class="form-col">
+              <div class="form-card">
+                <div class="form-card-header">
+                  <span class="form-card-icon">📋</span>
+                  <h3>Your Resume</h3>
+                </div>
+                <div class="form-group">
+                  <label for="resume-text">Resume Text <span class="required">*</span></label>
+                  <textarea id="resume-text" rows="16" placeholder="Paste your complete resume text here. Include all sections: education, experience, projects, skills..." required></textarea>
+                  <span class="char-count" id="resume-char-count">0 characters</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <label class="toggle-label" for="gen-cover-letter">
+              <input type="checkbox" id="gen-cover-letter" checked />
+              <span class="toggle-switch"></span>
+              <span>Generate cover letter too</span>
+            </label>
+            <button type="submit" id="submit-btn" class="btn btn-primary btn-xl">
+              <span class="btn-icon">✨</span>
+              Tailor My Resume with AI
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PANE 2: Loading -->
+      <div id="pane-loading" class="pane hidden">
+        <div class="loading-container">
+          <div class="loading-animation">
+            <div class="loading-ring"></div>
+            <div class="loading-ring-inner"></div>
+            <span class="loading-emoji">🤖</span>
+          </div>
+          <h2 id="loading-title">Analyzing your resume…</h2>
+          <p id="loading-subtitle">Llama AI is reading your resume and job description</p>
+          <div class="loading-steps">
+            <div class="ls-item" id="ls-1"><span class="ls-icon">⏳</span><span>Parsing resume & job description</span></div>
+            <div class="ls-item" id="ls-2"><span class="ls-icon">⏳</span><span>Running ATS keyword analysis</span></div>
+            <div class="ls-item" id="ls-3"><span class="ls-icon">⏳</span><span>Rewriting bullets with STAR method</span></div>
+            <div class="ls-item" id="ls-4"><span class="ls-icon">⏳</span><span>Generating LaTeX document</span></div>
+            <div class="ls-item" id="ls-5"><span class="ls-icon">⏳</span><span>Finalizing your tailored resume</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE 3: Results -->
+      <div id="pane-results" class="pane hidden">
+        <!-- Score cards -->
+        <div class="score-row">
+          <div class="score-card">
+            <svg viewBox="0 0 80 80" class="score-ring-svg">
+              <circle class="ring-bg" cx="40" cy="40" r="32" />
+              <circle id="arc-original" class="ring-fill ring-original" cx="40" cy="40" r="32" stroke-dasharray="0 201" />
+            </svg>
+            <div class="score-info">
+              <div id="num-original" class="score-num">0%</div>
+              <div class="score-label">Current ATS Score</div>
+            </div>
+          </div>
+          <div class="score-arrow">→</div>
+          <div class="score-card score-card-enhanced">
+            <svg viewBox="0 0 80 80" class="score-ring-svg">
+              <circle class="ring-bg" cx="40" cy="40" r="32" />
+              <circle id="arc-enhanced" class="ring-fill ring-enhanced" cx="40" cy="40" r="32" stroke-dasharray="0 201" />
+            </svg>
+            <div class="score-info">
+              <div id="num-enhanced" class="score-num">0%</div>
+              <div class="score-label">Projected ATS Score</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-bar">
+          <button class="rtab active" data-tab="analysis" aria-selected="true">📊 Analysis</button>
+          <button class="rtab" data-tab="resume" aria-selected="false">📄 LaTeX Resume</button>
+          <button class="rtab" data-tab="cover" aria-selected="false">✉️ Cover Letter</button>
+        </div>
+
+        <!-- Tab: Analysis -->
+        <div class="tab-panel active" id="panel-analysis">
+          <div class="analysis-grid">
+            <div class="analysis-card">
+              <h4>🎯 Keywords Matched</h4>
+              <div class="tag-group" id="kw-matched"></div>
+            </div>
+            <div class="analysis-card">
+              <h4>❌ Keywords Missing</h4>
+              <div class="tag-group" id="kw-missing"></div>
+            </div>
+            <div class="analysis-card">
+              <h4>💡 Suggested Keywords</h4>
+              <div class="tag-group" id="kw-suggested"></div>
+            </div>
+            <div class="analysis-card">
+              <h4>🚀 Skills to Highlight</h4>
+              <div class="tag-group" id="skills-highlight"></div>
+            </div>
+            <div class="analysis-card">
+              <h4>➕ Skills to Add</h4>
+              <div class="tag-group" id="skills-add"></div>
+            </div>
+          </div>
+          <div class="improvements-section">
+            <h4>✨ AI Improvements</h4>
+            <div id="improvements-list"></div>
+          </div>
+          <div class="tips-section">
+            <h4>📌 Actionable Tips</h4>
+            <div id="tips-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab: LaTeX Resume -->
+        <div class="tab-panel" id="panel-resume">
+          <div class="latex-header">
+            <div>
+              <h4 id="dl-job-title" style="margin:0;font-size:1.1rem;"></h4>
+              <p style="margin:4px 0 0;color:var(--text-muted);font-size:0.85rem;">Jake's Resume Template — ATS Optimized</p>
+            </div>
+            <div class="latex-actions">
+              <a id="btn-overleaf" href="#" target="_blank" class="btn btn-primary btn-sm">Open in Overleaf ↗</a>
+              <button id="btn-copy-latex" class="btn btn-secondary btn-sm">Copy LaTeX</button>
+            </div>
+          </div>
+          <div class="latex-code-wrap">
+            <pre id="latex-code-display" class="latex-code"></pre>
+          </div>
+          <div class="latex-footer">
+            <a id="btn-overleaf-2" href="#" target="_blank" class="btn btn-primary">🚀 Open in Overleaf & Download PDF</a>
+            <button id="btn-copy-latex-2" class="btn btn-secondary">Copy LaTeX Source</button>
+          </div>
+        </div>
+
+        <!-- Tab: Cover Letter -->
+        <div class="tab-panel" id="panel-cover">
+          <div class="cl-header">
+            <h4>Cover Letter</h4>
+            <div class="cl-actions">
+              <button id="btn-regen-cl" class="btn btn-secondary btn-sm">🔄 Regenerate</button>
+              <button id="btn-copy-cl" class="btn btn-primary btn-sm">Copy</button>
+            </div>
+          </div>
+          <div id="cover-letter-text" class="cover-letter-body">
+            <div class="cl-loading">Generating cover letter…</div>
+          </div>
+        </div>
+
+        <div class="results-footer">
+          <button id="btn-start-over" class="btn btn-ghost">← Start Over</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
