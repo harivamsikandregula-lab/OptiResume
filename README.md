@@ -10,10 +10,6 @@ Instantly tailor your resume to any job description using AI. OptiRes uses Gemma
 - **Real-time Processing**: Fast resume generation powered by HuggingFace API
 - **Simple Interface**: Clean, user-friendly web interface
 
-## Prerequisites
-
-- Node.js (v14 or higher)
-- HuggingFace API token
 
 ## Installation
 
@@ -61,9 +57,6 @@ The application will be available at `http://localhost:3000`
 
 OptiRes uses HuggingFace's free-tier API with the Gemma model. While the AI generates highly optimized resumes for most job descriptions, please review the output before submitting. Occasionally (< 10% of cases), the LaTeX formatting may need minor adjustments. We recommend checking the final resume for any formatting inconsistencies to ensure it displays perfectly in your ATS.
 
-## License
-
-ISC
 
 ## Contributing
 
