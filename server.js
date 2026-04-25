@@ -27,7 +27,7 @@ async function fetchHF(prompt) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'meta-llama/Meta-Llama-3.1-8B-Instruct',
+      model: 'google/gemma-4-31B-it:novita',
       messages: [{ role: 'user', content: prompt }],
       max_tokens: 4000
     })
@@ -304,12 +304,12 @@ IMPORTANT JSON GUIDELINES:
           parsed = JSON.parse(responseText.trim());
         }
       }
-      
+
       // Log skills for debugging
       if (parsed.tailoredResume?.skills?.categories) {
         console.log('✅ Skills extracted:', JSON.stringify(parsed.tailoredResume.skills.categories, null, 2));
       }
-      
+
     } catch (parseErr) {
       console.error('JSON parse error:', parseErr);
       console.error('Raw response (first 1000 chars):', responseText.substring(0, 1000));
@@ -412,7 +412,7 @@ app.post('/api/generate-latex', async (req, res) => {
     }
 
     const r = tailoredResume;
-    
+
     // ENFORCE 1-PAGE LIMITS: Programmatic slicing
     if (r.experience && Array.isArray(r.experience)) {
       r.experience = r.experience.slice(0, 4); // max 4 jobs
