@@ -1,4 +1,4 @@
-# OptiResumeume — AI Resume Tailor
+# OptiResume — AI Resume Tailor
 
 Instantly tailor your resume to any job description using AI. OptiResume uses Gemma AI to generate ATS-optimized, LaTeX-formatted resumes that stand out to recruiters.
 
