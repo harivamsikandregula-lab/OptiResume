@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OptiRes — AI Resume Tailor</title>
-  <meta name="description" content="Instantly tailor your resume to any job description using Llama AI. Get ATS-optimized, LaTeX-formatted resumes that stand out to recruiters." />
+  <meta name="description" content="Instantly tailor your resume to any job description using Gemma AI. Get ATS-optimized, LaTeX-formatted resumes that stand out to recruiters." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
@@ -61,7 +61,7 @@
         <div class="how-card">
           <div class="how-icon">🤖</div>
           <h3>2. AI Tailors It</h3>
-          <p>Llama 3.1 analyzes the JD, rewrites your bullets with STAR methodology, and injects ATS keywords.</p>
+          <p>Gemma 4 analyzes the JD, rewrites your bullets with STAR methodology, and injects ATS keywords.</p>
         </div>
         <div class="how-card">
           <div class="how-icon">⬇️</div>
@@ -150,7 +150,7 @@
             <span class="loading-emoji">🤖</span>
           </div>
           <h2 id="loading-title">Analyzing your resume…</h2>
-          <p id="loading-subtitle">Llama AI is reading your resume and job description</p>
+          <p id="loading-subtitle">Gemma AI is reading your resume and job description</p>
           <div class="loading-steps">
             <div class="ls-item" id="ls-1"><span class="ls-icon">⏳</span><span>Parsing resume & job description</span></div>
             <div class="ls-item" id="ls-2"><span class="ls-icon">⏳</span><span>Running ATS keyword analysis</span></div>
@@ -247,6 +247,15 @@
           <div class="latex-footer">
             <a id="btn-overleaf-2" href="#" target="_blank" class="btn btn-primary">🚀 Open in Overleaf & Download PDF</a>
             <button id="btn-copy-latex-2" class="btn btn-secondary">Copy LaTeX Source</button>
+          </div>
+          
+          <!-- Regeneration Section -->
+          <div class="latex-regen-wrap" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+            <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--text-color);">Not satisfied? Regenerate it</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <input type="text" id="latex-suggestion" placeholder="Optional: Enter suggestions (e.g., 'Make it more concise', 'Highlight leadership')" style="flex: 1; min-width: 200px; padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text-color); font-family: var(--font-sans);" />
+              <button id="btn-regen-latex" class="btn btn-secondary" style="background: var(--bg-card); border: 1px solid var(--border-color);">🔄 Regenerate with AI</button>
+            </div>
           </div>
         </div>
 

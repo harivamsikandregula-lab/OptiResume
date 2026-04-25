@@ -248,6 +248,61 @@ function copyLatex() {
 $('btn-copy-latex').addEventListener('click', copyLatex);
 $('btn-copy-latex-2').addEventListener('click', copyLatex);
 
+// ─── Regenerate LaTeX ────────────────────────────
+$('btn-regen-latex').addEventListener('click', async () => {
+  if (!state.tailoredData || !state.tailoredData.tailoredResume) return;
+  const suggestion = $('latex-suggestion').value.trim();
+  const btn = $('btn-regen-latex');
+  const originalText = btn.innerHTML;
+  
+  try {
+    btn.innerHTML = '🔄 Regenerating...';
+    btn.disabled = true;
+    showToast('🔄 Regenerating resume with AI...', 2000);
+    
+    // Call new regenerate API
+    const regenRes = await fetch('/api/regenerate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        tailoredResume: state.tailoredData.tailoredResume,
+        originalResumeText: $('resume-text').value.trim(),
+        suggestion: suggestion,
+        jobTitle: state.jobTitle,
+        jobDescription: $('job-description').value.trim()
+      }),
+    });
+    const regenJson = await regenRes.json();
+    if (!regenRes.ok) throw new Error(regenJson.error || 'Regeneration failed');
+    
+    // Update state
+    state.tailoredData.tailoredResume = regenJson.tailoredResume;
+    
+    // Now generate LaTeX with the new resume
+    const latexRes = await fetch('/api/generate-latex', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tailoredResume: state.tailoredData.tailoredResume }),
+    });
+    const latexJson = await latexRes.json();
+    if (!latexRes.ok) throw new Error(latexJson.error || 'LaTeX generation failed');
+    
+    state.latexSource = latexJson.latex;
+    populateResults(state.tailoredData, latexJson.latex);
+    
+    // Clear suggestion input
+    $('latex-suggestion').value = '';
+    
+    showToast('✅ Resume regenerated successfully!', 3000);
+  } catch (err) {
+    showToast(`❌ Error: ${err.message}`, 5000);
+    console.error(err);
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+});
+
 // ─── Copy Cover Letter ───────────────────────────
 $('btn-copy-cl').addEventListener('click', () => {
   const text = $('cover-letter-text').textContent;
@@ -353,7 +408,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     // ── Step 1: Tailor ──
-    updateLoadingUI('Analyzing your resume…', 'Llama AI is reading your resume and job description');
+    updateLoadingUI('Analyzing your resume…', 'Gemma AI is reading your resume and job description');
     const tailorRes = await fetch('/api/tailor', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
