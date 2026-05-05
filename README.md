@@ -45,6 +45,7 @@ The application will be available at `http://localhost:3000`
 2. Paste the job description
 3. Click "Tailor Resume"
 4. Get an AI-optimized resume ready to apply
+5. If you aren't satisfied with your current generated Latex source then under "Not satisfied? Regenerate it" option enter the changes you want AI to make and then wait till the new Latex is         generated and then you can see the updated code in the latex
 
 ## Tech Stack
 
