@@ -1,6 +1,6 @@
-# OptiResume — AI Resume Tailor
+# OptiRes — AI Resume Tailor
 
-Instantly tailor your resume to any job description using AI. OptiResume uses Gemma AI to generate ATS-optimized, LaTeX-formatted resumes that stand out to recruiters.
+Instantly tailor your resume to any job description using AI. OptiRes uses Gemma AI to generate ATS-optimized, LaTeX-formatted resumes that stand out to recruiters.
 
 ## Features
 
@@ -15,8 +15,8 @@ Instantly tailor your resume to any job description using AI. OptiResume uses Ge
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/harivamsikandregula-lab/OptiResume.git
-cd OptiResume
+git clone https://github.com/harivamsikandregula-lab/OptiRes.git
+cd OptiRes
 ```
 
 2. Install dependencies:
@@ -55,9 +55,9 @@ The application will be available at `http://localhost:3000`
 
 ## Important Note
 
-OptiResume uses HuggingFace's free-tier API with the Gemma model. While the AI generates highly optimized resumes for most job descriptions, please review the output before submitting. Occasionally (< 10% of cases), the LaTeX formatting may need minor adjustments. We recommend checking the final resume for any formatting inconsistencies to ensure it displays perfectly in your ATS.
+OptiRes uses HuggingFace's free-tier API with the Gemma model. While the AI generates highly optimized resumes for most job descriptions, please review the output before submitting. Occasionally (< 10% of cases), the LaTeX formatting may need minor adjustments. We recommend checking the final resume for any formatting inconsistencies to ensure it displays perfectly in your ATS.
 
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/harivamsikandregula-lab/OptiResume).
+Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/harivamsikandregula-lab/OptiRes).
